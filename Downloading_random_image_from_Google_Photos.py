@@ -48,7 +48,7 @@ holy_image = random.choice(Base_URL_list)
 holy_image = holy_image + "=w1080-h1080-c" #size of Image so ratio is 4/5
 
 download_file(holy_image, r'.\ImageBin', "yolo.jpg")
-cap = f"This is a random photo from @aryan_401 's Google Photo\nThis photo was shot on: {feature3} GMT\nThis photo had a 1 in {len(Base_URL_list)} Chance"
+cap = f"This is a random photo from @enterusernamehere 's Google Photo\nThis photo was shot on: {feature3} GMT\nThis photo had a 1 in {len(Base_URL_list)} Chance"
 upload_to_instagram(r'.\ImageBin\yolo.jpg', cap)
 os.remove(r'.\ImageBin\yolo.jpg.REMOVE_ME')
 file_obj.close()
