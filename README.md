@@ -1,6 +1,8 @@
 A script which lets you connect to your google Account and then posts 1 picture to your Instagram a day.
 
-To automate check out these steps : https://www.jcchouinard.com/python-automation-using-task-scheduler/ Extra steps needed :
+To automate check out these steps : https://www.jcchouinard.com/python-automation-using-task-scheduler/ 
+
+Extra steps needed :
 
     1.https://www.youtube.com/watch?v=6bzzpda63H0
     2.With the downloaded .json file, download and put in same folder
