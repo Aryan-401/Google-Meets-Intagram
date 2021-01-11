@@ -8,7 +8,7 @@ import json
 Base_URL_list = []
 file_obj = open(r'possible_urls.txt', 'a+')
 with open('./userinfo.json') as userinfo:
-  userdict = json.load(userinfo)
+    userdict = json.load(userinfo)
 user = userdict['username']
 password = userdict['password']
 
@@ -20,7 +20,7 @@ def download_file(url: str, destination_folder: str, file_name: str):
             f.write(response.content)
 
 
-log(user, password) #log in to Instagram
+log(user, password)  #log in to Instagram
 
 response = service.mediaItems().list(pageSize=100).execute()
 list_medias = response.get("mediaItems")
@@ -45,10 +45,11 @@ for j in Base_URL_list:
     j = j + '\n'
     file_obj.write(j)
 holy_image = random.choice(Base_URL_list)
-holy_image = holy_image + "=w1080-h1080-c" #size of Image so ratio is 4/5
+holy_image = holy_image + "=w1080-h1080-c"  #size of Image so ratio is 1.0
 
 download_file(holy_image, r'.\ImageBin', "yolo.jpg")
-cap = f"This is a random photo from @enterusernamehere 's Google Photo\nThis photo was shot on: {feature3} GMT\nThis photo had a 1 in {len(Base_URL_list)} Chance"
+cap = f"This is a random photo from @enterusernamehere 's Google Photo\nThis photo was shot on: {feature3} GMT\nThis " \
+      f"photo had a 1 in {len(Base_URL_list)} Chance "
 upload_to_instagram(r'.\ImageBin\yolo.jpg', cap)
 os.remove(r'.\ImageBin\yolo.jpg.REMOVE_ME')
 file_obj.close()
