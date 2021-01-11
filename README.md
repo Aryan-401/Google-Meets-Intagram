@@ -7,7 +7,7 @@ Extra steps needed :
     1.https://www.youtube.com/watch?v=6bzzpda63H0
     2.With the downloaded .json file, download and put in same folder
     3.Edit the .json file by making it a .txt file and entering your Username and Password
-    4.Execute Script and Enter your Google Creds
+    4.Execute Script Download_image_from_Google_Photos.py and Enter your Google Creds
     5.None of this Data is sent to me, it runs on your local VM / Machine
     6. TADA should be all done
 
