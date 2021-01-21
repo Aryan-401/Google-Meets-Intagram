@@ -63,7 +63,7 @@ if cur == feature3:
     os.remove(r'.\ImageBin\yolo.jpg.REMOVE_ME')
 
 else:
-    copy(r'C:\Users\defaultuser100000\Google Meets Intagram\yolo1.jpg', r'C:\Users\defaultuser100000\Google Meets Intagram\ImageBin')
+    copy(r'Enter Full path of no photo Image', r'Full path of ImageBin Folder')
     sleep(60)
     file_obj.write('.....NO IMAGE.....\n')
     upload_to_instagram(r'.\ImageBin\yolo1.jpg', f'If you see this image that means that no new pictures were taken on {cur}')
