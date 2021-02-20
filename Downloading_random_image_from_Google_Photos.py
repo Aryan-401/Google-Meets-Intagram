@@ -8,9 +8,8 @@ import traceback
 from json import load
 import datetime
 from shutil import copy
-# ------------------------------------------------------
-# Edits to path need to be made on lines : 76, 79, 80, 81, 86, 87, 90, 93, 94, 103, 104
-# ------------------------------------------------------
+
+
 Base_URL_list = []
 x = datetime.datetime.now()
 cur = x.strftime('%Y-%m-%d')
@@ -23,8 +22,14 @@ password = userdict['password']
 
 insult = ['super ugly', 'an absolute dumbass', 'as useless as a car with 3 wheels',                              #Insults can be disabled
           'single af', ' a simp', 'Hella Emo', 'so cute', 'a Weirdo', 'Lou', 'an asshole', 'dumb', 'wholesome',  #by changing up some code on
-          'stupid', 'awesome', 'a show-off-person', 'an asshole', 'butterfingers', 'a third wheel to everyone',  #line 78
+          'stupid', 'awesome', 'a show-off-person', 'an asshole', 'butterfingers', 'a third wheel to everyone',  #line 84
           'retarded', 'a tiktok star', 'fat']
+
+loc_no_pic_taken_og = r''  #Whole path of 'No picture taken on this day' image
+loc_whole_path_Imagebin = r''  #Whole Path to ImageBin Dir
+loc_no_pic_taken_Imagebin = r''  #Path of 'No picture taken on this day' inside ImageBin
+loc_error_image_og = r''  #Whole Path of 'Error' image
+loc_error_image_Imagebin = r''  #Path of 'Error' inside ImageBin
 
 
 def download_file(url: str, destination_folder: str, file_name: str):
@@ -73,35 +78,35 @@ try:
 
     else:
         file_obj.write(f'-------{cur}-------\n')
-        copy(r'ENTER PATH OF ORIGINAL "NO IMAGES WERE TAKEN"', r'ENTER WHOLE PATH OF IMAGEBIN')
+        copy(loc_no_pic_taken_og, loc_whole_path_Imagebin)
         sleep(20)
         file_obj.write('.....NO IMAGE.....\n')
-        upload_to_instagram(r'ENTER PATH OF "NO IMAGES WERE TAKEN" PHOTO IN IMAGEBIN', f'No new pictures were taken on {cur} \n @{user} is {choice(insult)} \n\n\n[User Submitted Entries]')
-        if os.path.isfile(r'ENTER PATH OF IMAGEBIN COPY OF "NO IMAGES WERE TAKEN" AND ADD ".REMOVE_ME" TO END'):
-            os.remove(r'SAME AS LINE 79')
+        upload_to_instagram(loc_no_pic_taken_Imagebin, f'No new pictures were taken on {cur} \n @{user} is {choice(insult)} \n\n\n[User Submitted Entries]')
+        if os.path.isfile(loc_no_pic_taken_Imagebin + '.REMOVE_ME'):
+            os.remove(loc_no_pic_taken_Imagebin + 'REMOVE_ME')
 except Exception:
     try:
         caps = traceback.format_exc().split("\n")[-3]
         file_obj.write(f'-------{cur}-------\n')
-        copy(r'ENTER PATH OF ERROR IMAGE',
-             r'ENTER WHOLE PATH OF IMAGEBIN')
+        copy(loc_error_image_og,
+             loc_whole_path_Imagebin)
         sleep(10)
         file_obj.write(f'..... {traceback.format_exc()} .....\n')
-        upload_to_instagram(r'.\ENTER PATH OF "ERROR IMAGE" IN IMAGEBIN',
+        upload_to_instagram(loc_error_image_Imagebin,
                             f'{caps} Occured on {cur} @{user} is a total Coding noob \nHopefully it gets fixed by tomorrow')
         sleep(10)
-        if os.path.isfile(r'.ENTER PATH OF IMAGEBIN COPY OF "ERROR IMAGE" AND ADD ".REMOVE_ME" TO END'):
-            os.remove(r'SAME AS LINE 93')
+        if os.path.isfile(loc_error_image_Imagebin + ".REMOVE_ME"):
+            os.remove(loc_error_image_Imagebin)
     except IndexError:
-        copy(r'C:\Users\defaultuser100000\Google Meets Intagram\yolo2.jpg',
-             r'C:\Users\defaultuser100000\Google Meets Intagram\ImageBin')
+        copy(loc_error_image_og,
+             loc_whole_path_Imagebin)
         file_obj.write(f'..... {traceback.format_exc()} .....\n')
         sleep(10)
-        upload_to_instagram(r'SAME AS LINE 89',
+        upload_to_instagram(loc_error_image_Imagebin,
                             f"Something Happened, I'm not sure what happened cuz this part of the code was never supposed to run YOLO")
         sleep(10)
-        if os.path.isfile(r'SAME AS LINE 93'):
-            os.remove(r'SAME AS LINE 93')
+        if os.path.isfile(loc_error_image_Imagebin + '.REMOVE_ME'):
+            os.remove(loc_error_image_Imagebin + '.REMOVE_ME')
 
 file_obj.close()
 quit()
