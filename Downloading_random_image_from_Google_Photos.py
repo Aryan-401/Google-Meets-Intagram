@@ -10,13 +10,13 @@ from shutil import copy
 from datetime import date
 import calendar
 
-my_date = date.today()
-today = calendar.day_name[my_date.weekday()]
 # -------- ^ Initiations || v META CODE --------
 Base_URL_list = []
 x = datetime.datetime.now()
 cur = x.strftime('%Y-%m-%d')
-file_obj = open(r'possible_urls.txt', 'a+')
+my_date = date.today()
+today = calendar.day_name[my_date.weekday()]
+file_obj = open(r'audit_log.txt', 'a+')
 
 with open('./userinfo.json') as userinfo:
     userdict = load(userinfo)
@@ -24,13 +24,13 @@ user = userdict['username']
 password = userdict['password']
 other_user = userdict['other_user']
 # -------- IMPORTANT PATHS --------
-loc_no_pic_taken_og = r''  # Whole path of 'No picture taken on this day' image
-loc_whole_path_image_bin = r''  # Whole Path to ImageBin Dir
-loc_no_pic_taken_image_bin = r''  # Path of 'No picture taken on this day' inside ImageBin
-loc_error_image_og = r''  # Whole Path of 'Error' image
-loc_error_image_image_bin = r''  # Path of 'Error' inside ImageBin
+loc_no_pic_taken_og = r'C:\Users\defaultuser100000\Google Meets Intagram\yolo1.jpg'  # Whole path of 'No picture taken on this day' image
+loc_whole_path_image_bin = r'C:\Users\defaultuser100000\Google Meets Intagram\ImageBin'  # Whole Path to ImageBin Dir
+loc_no_pic_taken_image_bin = r'.\ImageBin\yolo1.jpg'  # Path of 'No picture taken on this day' inside ImageBin
+loc_error_image_og = r'C:\Users\defaultuser100000\Google Meets Intagram\yolo2.jpg'  # Whole Path of 'Error' image
+loc_error_image_image_bin = r'.\ImageBin\yolo2.jpg'  # Path of 'Error' inside ImageBin
 # -------- HASHTAGS --------
-base_hashtags = "#coding #python #automation #instabot #instapy #google #photos #github #instagram #pycharm #f4f "
+base_hashtags = "#coding #python #automation #instabot #instapy #google #photos #github #instagram #pycharm #f4f #programming #project #pandas #datascience "
 daily_hashtags = {'Monday': '#MondayMemories #MotivationMonday #MondayMotivation #MondayBlues ',
                   'Tuesday': '#TastingTuesday #TechTuesday #TipTuesday #TopicTuesday #TransformationTuesday ',
                   'Wednesday': '#HumpDay #WayBackWednesday #WonderfulWednesday #WellnessWednesday #WednesdayWisdom ',
@@ -54,7 +54,7 @@ log(user, password)  # log in to Instagram
 # -------- START OF PROGRAM --------
 
 try:
-    from init_photo_service import service
+    from init_photo_service import service  # Initating Google Photos Module last so that error management can happen
 
     response = service.mediaItems().list(pageSize=100).execute()
     list_medias = response.get("mediaItems")
@@ -76,10 +76,8 @@ try:
         if dates == feature3:
             Base_URL_list.append(row['baseUrl'])
     if cur == feature3:
-        file_obj.write(f'-------{feature3}-------\n')
-        for j in Base_URL_list:
-            j = j + '\n'
-            file_obj.write(j)
+        file_obj.write(
+            f'-------{feature3}-------\nNo Error Occurred at {datetime.datetime.time(datetime.datetime.now()).strftime("%H:%M:%S")}\n')
         holy_image = choice(Base_URL_list)
         holy_image = holy_image + "=w1080-h1080-c"  # size of Image so ratio is 1:1
 
