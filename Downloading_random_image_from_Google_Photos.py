@@ -30,7 +30,7 @@ loc_no_pic_taken_image_bin = r'.\ImageBin\yolo1.jpg'  # Path of 'No picture take
 loc_error_image_og = r'C:\Users\defaultuser100000\Google Meets Intagram\yolo2.jpg'  # Whole Path of 'Error' image
 loc_error_image_image_bin = r'.\ImageBin\yolo2.jpg'  # Path of 'Error' inside ImageBin
 # -------- HASHTAGS --------
-base_hashtags = "#coding #python #automation #instabot #instapy #google #photos #github #instagram #pycharm #f4f #programming #project #pandas #datascience "
+base_hashtags = "#coding #python #automation #instabot #instapy #google #photos #github #instagram #pycharm #f4f #programming #project #pandas #datascience #💻"
 daily_hashtags = {'Monday': '#MondayMemories #MotivationMonday #MondayMotivation #MondayBlues ',
                   'Tuesday': '#TastingTuesday #TechTuesday #TipTuesday #TopicTuesday #TransformationTuesday ',
                   'Wednesday': '#HumpDay #WayBackWednesday #WonderfulWednesday #WellnessWednesday #WednesdayWisdom ',
@@ -39,7 +39,7 @@ daily_hashtags = {'Monday': '#MondayMemories #MotivationMonday #MondayMotivation
                   'Saturday': '#SaturdaySwag #SaturdayStyle #SalesSaturday #SelfieSaturday #ShoutoutSaturday ',
                   'Sunday': '#StartupSunday #SundaySweat #SelfieSunday #SundayFunday #Weekend '}
 no_photo_hashtags = "#nophoto #serious #ugly #me #bored "
-error_photo_hashtags = '#error #mistake #fix #stackoverflow #oops '
+error_photo_hashtags = '#error #mistake #fix #stackoverflow #oops #🔧'
 
 
 def download_file(url: str, destination_folder: str, file_name: str):
@@ -77,7 +77,7 @@ try:
             Base_URL_list.append(row['baseUrl'])
     if cur == feature3:
         file_obj.write(
-            f'-------{feature3}-------\nNo Error Occurred at {datetime.datetime.time(datetime.datetime.now()).strftime("%H:%M:%S")}\n')
+            f'-------{feature3}-------\nUploaded Picture from Google Photos at {datetime.datetime.time(datetime.datetime.now()).strftime("%H:%M:%S")}\n')
         holy_image = choice(Base_URL_list)
         holy_image = holy_image + "=w1080-h1080-c"  # size of Image so ratio is 1:1
 
@@ -85,8 +85,8 @@ try:
         cap = f"""Hi! If this is the first time you are seeing these types of posts, read my bio for more info
             This is an automatic account which uploads a picture from @{other_user} 's Google Photos!
 
-            This photo was shot on: {feature3} GMT
-            This photo had a 1 in {len(Base_URL_list)} Chance of being uploaded
+
+            This photo was shot on: {feature3} GMT and had a 1 in {len(Base_URL_list)} Chance of being uploaded
             ---- HASHTAGS ----
             {base_hashtags}{daily_hashtags[today]}"""
         upload_to_instagram(r'.\ImageBin\yolo.jpg', cap)
@@ -97,7 +97,8 @@ try:
         file_obj.write(f'-------{cur}-------\n')
         copy(loc_no_pic_taken_og, loc_whole_path_image_bin)
 
-        file_obj.write('.....NO IMAGE.....\n')
+        file_obj.write(
+            f'Uploaded yolo1.jpg (No new photos were taken today) [{datetime.datetime.time(datetime.datetime.now()).strftime("%H:%M:%S")}]\n')
         upload_to_instagram(loc_no_pic_taken_image_bin, f"""Hi! If this is the first time you are seeing these types of posts, read my bio for more info 
                                                         No new pictures were taken on {cur}
                                                         Cheers!
@@ -114,7 +115,7 @@ except Exception:
         copy(loc_error_image_og,
              loc_whole_path_image_bin)
 
-        file_obj.write(f'..... {traceback.format_exc()} .....\n')
+        file_obj.write(f' {traceback.format_exc()} \n')
         upload_to_instagram(loc_error_image_image_bin,
                             f"""Hi! If this is the first time you are seeing these types of posts, read my bio for more info
 
